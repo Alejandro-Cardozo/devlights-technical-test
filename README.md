@@ -1,4 +1,10 @@
 # devlights-technical-test
+
 Technical exercise using Node.js
 
-Run the ***src/index.js** file using Node or use **npm run start** to run the app on port 3000.
+**Instructions**
+
+npm install
+npm run start
+
+After that you should see the app running on port 3000.
