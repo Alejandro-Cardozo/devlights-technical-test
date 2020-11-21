@@ -8,13 +8,20 @@ router.get("/", (req, res) => {
 
 router.post("/", async (req, res) => {
   const text = req.body.text;
-  const separation = text.split("\r\n");
-  separation.shift();
-  console.log(separation);
-  const x = separation.map((value) => sumOfSimilarities(value.trim()));
-  console.log(x);
-
-  res.render("index", { text: x }); //ha
+  try {
+    if (text.indexOf("\r\n") === -1) {
+      res.render("index", { text: "Invalid input" });
+    }
+    const separation = text.split("\r\n");
+    console.log(separation);
+    separation.shift();
+    console.log(separation);
+    const x = separation.map((value) => sumOfSimilarities(value.trim()));
+    console.log(x);
+    res.render("index", { text: x });
+  } catch (err) {
+    res.render("index", { text: "Invalid input" });
+  }
 });
 
 module.exports = router;

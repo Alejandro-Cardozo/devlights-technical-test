@@ -1,12 +1,9 @@
 const zFunction = require("../util/zFunction");
+// This function accumulates the value of each similarity
 function sumOfSimilarities(inputString) {
   let total = 0;
   for (let i = 0; i < inputString.length; i++) {
-    let compoundString = `${inputString.substr(
-      i,
-      inputString.length
-    )}#${inputString}`;
-    total = total + zFunction(compoundString);
+    total = total + zFunction(inputString, inputString.length - i - 1);
   }
   return total;
 }
